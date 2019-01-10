@@ -14,12 +14,21 @@ public class Category {
 	int cId;
 	@Column(unique = true)
 	String cName;
+	String cDescription;
 	public Category()
 	{
 		
 	}
-	public Category(int cId, String cName) {
+	public Category(String cName,String cDescription) {
 		this.cName = cName;
+		this.cDescription=cDescription;
+	}
+	
+	public String getcDescription() {
+		return cDescription;
+	}
+	public void setcDescription(String cDescription) {
+		this.cDescription = cDescription;
 	}
 	public int getcId() {
 		return cId;

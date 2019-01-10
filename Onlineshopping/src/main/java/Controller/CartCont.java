@@ -34,7 +34,7 @@ public class CartCont {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Uname=authentication.getName();
 		
-		if(cd.isPresent(id,name))
+		if(cd.isPresent(id,name,Uname))
 		{
 			cart=cd.getItem(id);
 			
@@ -42,7 +42,7 @@ public class CartCont {
 			cd.updateCartProd(cart);
 			
 		}
-		else if(!cd.isPresent(id,name))
+		else if(!cd.isPresent(id,name,Uname))
 		{			
 			cd.insertCartProd(id,Uname);
 		}

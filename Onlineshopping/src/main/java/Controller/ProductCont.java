@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.Category;
+import model.CategoryDAO;
 import model.Product;
 import model.ProductDAO;
 import model.Supplier;
@@ -20,8 +21,19 @@ import model.Supplier;
 @Controller
 public class ProductCont {
 	@RequestMapping(value="/addProduct",method=RequestMethod.GET)
-	public String homepage()
+	public String homepage(Model m)
 	{
+		List<Category> lp=null;
+		CategoryDAO cd=new CategoryDAO();
+		try
+		{
+			lp=(List<Category>)cd.getAllCategorys();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		m.addAttribute("products",lp);
 		return "productadd";
 	}
 	

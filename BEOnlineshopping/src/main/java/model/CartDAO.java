@@ -78,7 +78,7 @@ public class CartDAO {
 		return l;
 	}
 	
-	public boolean isPresent(int id,String itemName)
+	public boolean isPresent(int id,String itemName,String uname)
 	{
 		boolean b=true;
 		Cart cart=null;
@@ -98,9 +98,13 @@ public class CartDAO {
 		{
 			b=false;
 		}
-		else if(cart!=null)
+		else if(cart!=null&&cart.Ucartname==uname)
 		{
 			b=true;
+		}
+		else if(cart!=null&&cart.Ucartname!=uname)
+		{
+			b=false;
 		}
 		return b;
 	}

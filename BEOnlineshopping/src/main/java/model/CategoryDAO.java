@@ -62,4 +62,20 @@ public class CategoryDAO {
 		}
 	}
 	
+	public List<Category> getAllCategorys()
+	{
+		List<Category> l=null;
+		try
+		{
+			sess=dbc.getSession();
+			sess.beginTransaction();
+			l=sess.createQuery("FROM  Category",Category.class).getResultList();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return l;
+	}
+	
 }
